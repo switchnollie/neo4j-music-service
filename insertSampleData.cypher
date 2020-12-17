@@ -16,6 +16,11 @@ CREATE (al:Album)<-[:PUBLISHED]-(ar)
 SET al.name = 'Electric Ladyland', al.released = 1968;
 
 MATCH (ar:Artist)
+WHERE ar.name = 'Jimi Hendrix'
+CREATE (al:Album)<-[:PUBLISHED]-(ar)
+SET al.name = 'Axis: Bold as Love', al.released = 1967;
+
+MATCH (ar:Artist)
 WHERE ar.name = 'Eric Clapton'
 CREATE (al:Album)<-[:PUBLISHED]-(ar)
 SET al.name = 'Behind The Sun', al.released = 1985;
@@ -29,6 +34,11 @@ MATCH (ar:Artist)
 WHERE ar.name = 'John Mayer'
 CREATE (al:Album)<-[:PUBLISHED]-(ar)
 SET al.name = 'Continuum', al.released = 2006;
+
+MATCH (ar:Artist)
+WHERE ar.name = 'John Mayer'
+CREATE (al:Album)<-[:PUBLISHED]-(ar)
+SET al.name = 'The Search for Everything', al.released = 2017;
 
 MATCH (al:Album), (ar:Artist)
 WHERE al.name = 'Are You Experienced' AND ar.name = 'Jimi Hendrix'
@@ -55,6 +65,11 @@ WHERE ar.name = 'Jimi Hendrix'
 CREATE (ar)-[rel:Sings]->(s:Song:Single)
 SET s.name = 'Purple Haze', rel.role = 'Main Artist';
 
+MATCH (ar:Artist), (al:Album)
+WHERE ar.name = 'Jimi Hendrix' AND al.name = 'Axis: Bold as Love'
+CREATE (ar)-[rel:Sings]->(s:Song)-[:RELEASED_ON]->(al)
+SET s.name = 'Bold As Love', rel.role = 'Main Artist';
+
 MATCH (al:Album), (ar:Artist)
 WHERE al.name = 'The Breeze' AND ar.name = 'Eric Clapton'
 CREATE (ar)-[rel:Sings]->(s:Song)-[:RELEASED_ON]->(al)
@@ -78,6 +93,11 @@ MATCH (ar:Artist), (al:Album)
 WHERE ar.name = 'John Mayer' AND al.name = 'Continuum'
 CREATE (ar)-[rel:Sings]->(s:Song)-[:RELEASED_ON]->(al)
 SET s.name = "Gravity", rel.role = 'Main Artist';
+
+MATCH (ar:Artist), (al:Album)
+WHERE ar.name = 'John Mayer' AND al.name = 'Continuum'
+CREATE (ar)-[rel:Sings]->(s:Song)-[:RELEASED_ON]->(al)
+SET s.name = "Bold As Love", rel.role = 'Main Artist';
 
 MATCH (ar:Artist), (al:Album)
 WHERE ar.name = 'John Mayer' AND al.name = 'Continuum'

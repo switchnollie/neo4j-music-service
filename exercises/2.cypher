@@ -1,0 +1,1 @@
+MATCH (s:Song {name: 'Bold As Love'}) RETURN s;
