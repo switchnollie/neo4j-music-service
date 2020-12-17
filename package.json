@@ -1,0 +1,12 @@
+{
+  "name": "neo4j-exercise",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "esm": "^3.2.25",
+    "neo4j-driver": "^4.2.1"
+  },
+  "esm": {
+    "await": true
+  }
+}
