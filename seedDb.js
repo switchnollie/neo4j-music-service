@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import neo4j from "neo4j-driver";
 import loadCypher from "./loadCypher.js";
-import batchRunCypherQueries from "./batchRunCypherQueries.js";
+import { batchRunCypherWriteQueries } from "./runCypherQueries.js";
 
 const [
   ,
@@ -31,7 +31,7 @@ async function main() {
     console.log("---Executed queries---");
     console.log(cypherSeedingQueries);
     console.log("------");
-    await batchRunCypherQueries(session, cypherSeedingQueries);
+    await batchRunCypherWriteQueries(session, cypherSeedingQueries);
   } catch (err) {
     console.error(err);
   } finally {

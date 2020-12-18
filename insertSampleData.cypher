@@ -65,6 +65,11 @@ WHERE ar.name = 'Jimi Hendrix'
 CREATE (ar)-[rel:SINGS]->(s:Song:Single)
 SET s.name = 'Purple Haze', rel.role = 'Main Artist';
 
+MATCH (ar:Artist)
+WHERE ar.name = 'John Mayer'
+CREATE (ar)-[rel:SINGS]->(s:Song:Single)
+SET s.name = 'New Light', rel.role = 'Main Artist';
+
 MATCH (ar:Artist), (al:Album)
 WHERE ar.name = 'Jimi Hendrix' AND al.name = 'Axis: Bold as Love'
 CREATE (ar)-[rel:SINGS]->(s:Song)-[:RELEASED_ON]->(al)
