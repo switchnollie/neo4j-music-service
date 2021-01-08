@@ -1,1 +1,1 @@
-MATCH (s:Song {name: 'Bold As Love'}) RETURN s;
+MATCH (s:Song {name: 'Bold As Love'})-[:RELEASED_ON]->(a:Album) RETURN a;

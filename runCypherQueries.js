@@ -9,8 +9,7 @@ export async function runReadQueries(neo4jSession, queries) {
   let results = [];
   await neo4jSession.readTransaction(async (txc) => {
     for (let query of queries) {
-      const queryResult = await txc.run(query);
-      results = [...results, queryResult];
+      results = [...results, await txc.run(query)];
     }
   });
   return results;
