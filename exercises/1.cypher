@@ -1,3 +1,3 @@
 MATCH (a:Album)
-WHERE a.released IN [2017, 2020]
+WHERE 2017 <= a.released <= 2020
 RETURN a;
